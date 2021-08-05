@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const router = Router()
-const { userHome, userAbout } = require('../controllers/user.controllers')
+const { userHome, userAbout, logout } = require('../controllers/user.controllers')
 const isAuthenticated = require('../helpers/auth')
 const passport = require('passport')
 
@@ -11,5 +11,7 @@ router.post('/login', passport.authenticate('local', {
 	successRedirect: '/user',
 	failureRedirect: '/'
 }))
+
+router.get('/logout', logout)
 
 module.exports = router
